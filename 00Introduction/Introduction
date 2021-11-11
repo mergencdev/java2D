@@ -1,0 +1,48 @@
+// https://zetcode.com/gfx/java2d/introduction/
+
+Introduction
+last modified July 13, 2020
+
+In this part of the Java 2D tutorial, we will introduce the Java 2D technology.
+
+About
+This is Java 2D tutorial. It is aimed at beginners. This tutorial will teach you basics of programming in Java 2D. The images used in this tutorial can be downloaded here.
+
+Vector graphics
+There are two different computer graphics: vector and raster graphics. Raster (bitmap) graphics represent images as a collection of pixels. Vector graphics is the use of geometrical primitives such as points, lines, curves or polygons to represent images. These primitives are created using mathematical equations. Both types of computer graphics have advantages and disadvantages. The advantages of vector graphics are:
+
+smaller size
+ability to zoom indefinitely
+moving, scaling, filling, or rotating does not degrade the quality of an image
+The Java 2D API provides tools to work with both vector and raster graphics.
+
+Java 2D API
+Java 2D is an API for drawing two-dimensional graphics using the Java programming language.
+
+The Java 2D API provides the following capabilities:
+
+A uniform rendering model for display devices and printers
+A wide range of geometric primitives
+Hit detection on shapes, text, and images
+A compositing model
+Enhanced color support
+Printing documents
+Control of the quality of the rendering
+The Java 2D API enhances the graphics, text, and imaging capabilities of the Abstract Windowing Toolkit (AWT). AWT was the original toolkit for creating user interfaces and graphics in Java. For compatibility purposes, Java 2D is technically a superset of the AWT toolkit.
+
+Java 2D is a powerful technology. It can be used to create rich user interfaces, games, animations, multimedia applications, or various special effects.
+
+The paint mechanism
+The custom painting code should be placed in the paintComponent() method. This method is invoked when it is time to paint. The paint subsystem first calls the paint() method. This method invokes the following three methods:
+
+paintComponent()
+paintBorder()
+paintChildren()
+In specific cases, we might want to override the paintBorder() or the paintChildren() methods. In most cases, we override the paintComponent() method.
+
+The Graphics object
+The paintComponent's sole parameter is a Graphics object. It exposes a number of methods for drawing 2D shapes and obtaining information about the application's graphics environment. The Graphics2D class extends the Graphics class to provide more sophisticated control over geometry, coordinate transformations, color management, and text layout.
+
+The Graphics object is initialized before it is passed to the paintComponent() method, and then it is turned over to the paintBorder() and paintChildren() methods. This reuse improves performance but it may lead to problems if the painting code permanently changes the Graphics state. Therefore, we must either restore the original settings or work with a copy of the Graphics object. The copy is created with the Graphics's create() method; it must be later released with the dispose() method.
+
+In practical terms, the copy of the Graphics object does not need to be created if we set the following properties: font, colour, and rendering hints. For all other properties, (especially clip, composite operations, and transformations), we must create a copy of the Graphics object and later dispose it.
