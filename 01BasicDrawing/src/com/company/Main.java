@@ -8,7 +8,7 @@ import java.awt.event.WindowEvent;
 public class Main extends JFrame {
 
     public Main() {
-
+        initUI();
     }
 
     private void initUI() {
